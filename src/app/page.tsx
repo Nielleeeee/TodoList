@@ -1,6 +1,6 @@
-import { revalidatePath, revalidateTag } from "next/cache";
 import React, { useState, useEffect } from "react";
 import addList from "@/actions/addList";
+import AddListButton from "@/components/addListButton";
 
 export default async function Home() {
   const res = await fetch(
@@ -17,11 +17,11 @@ export default async function Home() {
   return (
     <main className="bg-slate-800 w-screen h-screen flex justify-center items-center">
       <section className="bg-white rounded-lg max-w-xl w-full px-8 py-4">
-        <h1 className="text-center font-semibold text-xl">Todo List</h1>
+        <h1 className="text-center font-semibold text-xl mb-4">Todo List</h1>
         <form action={addList} className="flex flex-col w-full">
-          <input type="text" name="todo" />
+          <input type="text" name="todo" className="border-[#2b2b2b] border rounded-lg px-4 py-1 mb-4" />
 
-          <button type="submit" className="bg-orange-400 rounded-lg">Add List</button>
+          <AddListButton />
         </form>
 
         <div>
