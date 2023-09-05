@@ -7,7 +7,7 @@ export default function AddListButton() {
   const { pending } = useFormStatus();
 
   return (
-    <button disabled={pending} className="bg-orange-400 disabled:opacity-80 rounded-lg">
+    <button disabled={pending} className="bg-orange-400 disabled:opacity-80 rounded-lg p-2">
       {pending ? "Adding List..." : "Add List"}
     </button>
   );
