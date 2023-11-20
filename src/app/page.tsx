@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import addList from "@/actions/addList";
+import {addList, toggleTodo} from "@/actions/action";
 import AddListButton from "@/components/addListButton";
 import { prisma } from "@/db";
 import TodoContent from "@/components/todoContent";
@@ -8,11 +8,6 @@ async function getTodo() {
   return prisma.todo.findMany();
 }
 
-async function toggleTodo(id: string, isDone: boolean) {
-  "use server";
-
-  await prisma.todo.update({ where: { id }, data: { isDone } });
-}
 
 export default async function Home() {
   const todo = await getTodo();

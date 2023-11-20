@@ -3,7 +3,7 @@
 import { prisma } from "@/db";
 import { revalidateTag } from "next/cache";
 
-export default async function addList(e: FormData) {
+export async function addList(e: FormData) {
   const content = e.get("todo")?.toString();
 
   if (!content || typeof(content) !== "string") {
@@ -18,4 +18,8 @@ export default async function addList(e: FormData) {
   });
 
   revalidateTag("list-todo");
+}
+
+export async function toggleTodo(id: string, isDone: boolean) {
+  await prisma.todo.update({ where: { id }, data: { isDone } });
 }
