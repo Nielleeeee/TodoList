@@ -30,7 +30,7 @@ export default async function Home() {
         </div>
 
         <div>
-          <ul className="flex flex-col gap-2">
+          <ul className="flex flex-col gap-2 overflow-y-scroll max-h-[50vh]">
             {todo.map((todos) => (
               <TodoContent key={todos.id} {...todos} toggleTodo={toggleTodo} />
             ))}
