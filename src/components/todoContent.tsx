@@ -2,13 +2,9 @@
 
 import React, { use, useState }  from "react";
 
-export default function TodoContent({id, content, isDone, toggleTodo}: Todos) {
+export default function TodoContent({id, content, isDone, toggleTodo, onDelete}: Todos) {
 
   const [isEdit, setIsEdit] = useState(false);
-
-  function onDelete(id: string): void {
-    throw new Error("Function not implemented.");
-  }
 
   return (
     <li className="flex flex-row justify-between">

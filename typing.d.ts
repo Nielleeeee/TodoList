@@ -6,3 +6,7 @@ type Todos = {
   onDelete: (id: string) => void; 
   toggleTodo: (id: string, isDone: boolean) => void;
 };
+
+interface TodoListFormProps {
+  addList: (formData: FormData) => Promise<void>;
+}
