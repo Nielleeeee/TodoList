@@ -2,5 +2,7 @@ type Todos = {
   id: string;
   content: string;
   isDone: boolean;
-  toggleTodo: (id: string, isDone: boolean) => void
+  isDeleted: boolean;
+  onDelete: (id: string) => void; 
+  toggleTodo: (id: string, isDone: boolean) => void;
 };

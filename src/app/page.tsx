@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {addList, toggleTodo} from "@/actions/action";
+import {addList, deleteList, toggleTodo} from "@/actions/action";
 import AddListButton from "@/components/addListButton";
 import { prisma } from "@/db";
 import TodoContent from "@/components/todoContent";
@@ -32,7 +32,7 @@ export default async function Home() {
         <div>
           <ul className="flex flex-col gap-2 overflow-y-scroll max-h-[50vh]">
             {todo.map((todos) => (
-              <TodoContent key={todos.id} {...todos} toggleTodo={toggleTodo} />
+              <TodoContent key={todos.id} {...todos} onDelete={deleteList} toggleTodo={toggleTodo} />
             ))}
           </ul>
         </div>
