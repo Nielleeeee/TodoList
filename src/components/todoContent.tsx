@@ -23,7 +23,8 @@ export default function TodoContent({
     setIsEdit(false);
   }
 
-  const handleSaveChange = () => {
+  const handleSaveChange = async () => {
+    await updateTodo(id, inputEditValue);
     setIsEdit(false);
   }
 
