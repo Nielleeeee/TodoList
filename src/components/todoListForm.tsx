@@ -8,10 +8,17 @@ export default function TodoListForm({ addList }: TodoListFormProps) {
 
   const handleSubmitTodoList = async (event: FormEvent) => {
     event.preventDefault();
-    const formData = new FormData();
-    formData.append("todo", todoInput);
-    await addList(formData);
-    setTodoInput("")
+    
+    try {
+      const formData = new FormData();
+      formData.append("todo", todoInput);
+      await addList(formData);
+      setTodoInput("")
+
+    } catch (error) {
+      console.error("Failed to add todo:", error);
+    }
+    
   }
 
   return (

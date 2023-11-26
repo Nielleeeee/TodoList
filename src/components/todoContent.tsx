@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 export default function TodoContent({
   id,
@@ -13,9 +13,20 @@ export default function TodoContent({
 
   const [isEdit, setIsEdit] = useState(false);
   const [inputEditValue, setInputEditValue] = useState(content);
+  const inputEditRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (event:any) => {
     setInputEditValue(event.target.value);
+  }
+
+  const handleEditChange = () => {
+    setIsEdit(true);
+
+    setTimeout(() => {
+      if (inputEditRef.current) {
+        inputEditRef.current.focus();
+      }
+    }, 0)
   }
 
   const handleCancelChange = () => {
@@ -53,6 +64,7 @@ export default function TodoContent({
         {/* Edit Todo List */}
         <input
           type="text"
+          ref={inputEditRef}
           name="editTodo"
           id="editTodo"
           value={inputEditValue}
@@ -114,7 +126,7 @@ export default function TodoContent({
         {/* Pencil SVG */}
         <span
           className={`cursor-pointer ${isEdit ? "hidden" : "flex"}`}
-          onClick={() => setIsEdit(true)}
+          onClick={handleEditChange}
         >
           <svg
             fill="#000000"
