@@ -25,8 +25,13 @@ export async function toggleTodo(id: string, isDone: boolean) {
   await prisma.todo.update({ where: { id }, data: { isDone } });
 }
 
-export async function editList(id: string, isDone: boolean) {
-  await prisma.todo.update({ where: { id }, data: { isDone } });
+export async function updateTodo(id: string, content: string) {
+  await prisma.todo.update({
+    where: { id },
+    data: { content: content as string }
+  });
+
+  revalidateTag("list-todo");
 }
 
 export async function deleteList(id: string) {
@@ -37,3 +42,5 @@ export async function deleteList(id: string) {
 
   revalidateTag("list-todo");
 }
+
+

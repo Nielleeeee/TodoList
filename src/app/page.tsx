@@ -1,5 +1,5 @@
 import React from "react";
-import {addList, deleteList, toggleTodo} from "@/actions/action";
+import {addList, deleteList, toggleTodo, updateTodo} from "@/actions/action";
 import TodoListForm from "@/components/todoListForm";
 import { prisma } from "@/db";
 import TodoContent from "@/components/todoContent";
@@ -30,7 +30,7 @@ export default async function Home() {
         <div>
           <ul className="flex flex-col gap-2 overflow-y-scroll max-h-[50vh]">
             {todo.map((todos) => (
-              <TodoContent key={todos.id} {...todos} onDelete={deleteList} toggleTodo={toggleTodo} />
+              <TodoContent key={todos.id} {...todos} onDelete={deleteList} toggleTodo={toggleTodo} updateTodo={updateTodo} />
             ))}
           </ul>
         </div>
